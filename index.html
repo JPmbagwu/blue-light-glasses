@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue-Light-Blocking Glasses</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Blue-Light-Blocking Glasses</h1>
+            <p>Choose a magnification option for your device</p>
+        </header>
+
+        <div class="options">
+            <label for="magnifyOptions">Select Magnification Level:</label>
+            <select id="magnifyOptions">
+                <option value="1.0">Normal</option>
+                <option value="1.5">1.5x</option>
+                <option value="2.0">2.0x</option>
+                <option value="2.5">2.5x</option>
+                <option value="3.0">3.0x</option>
+            </select>
+        </div>
+
+        <div class="display-options">
+            <label for="deviceOptions">Select Device:</label>
+            <select id="deviceOptions">
+                <option value="iphone">iPhone</option>
+                <option value="macbook">MacBook</option>
+                <option value="android">Android</option>
+                <option value="windows">Windows</option>
+            </select>
+        </div>
+
+        <div class="result">
+            <h2>Your Selection:</h2>
+            <p>Magnification: <span id="selectedMagnify">Normal</span></p>
+            <p>Device: <span id="selectedDevice">iPhone</span></p>
+            <p>Blue Light Filtering: <span id="filterStatus">Active</span></p>
+        </div>
+
+        <button id="installPWA">Install App</button>
+
+        <!-- Canvas for blue light overlay -->
+        <canvas id="blueLightOverlay"></canvas>
+
+        <!-- JavaScript files -->
+        <script src="app.js"></script>
+        <!-- Service Worker Registration -->
+        <script>
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(() => console.log("Service Worker Registered"))
+                    .catch(error => console.error("Service Worker Registration Failed:", error));
+            }
+        </script>
+    </div>
+</body>
+</html>
